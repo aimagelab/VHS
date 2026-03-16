@@ -66,7 +66,7 @@ body {
 .publication-authors {}
 
 .publication-authors a {
-  color: hsl(204, 86%, 53%) !important;
+  color: #C08497 !important;
 }
 
 .publication-authors a:hover {
@@ -131,15 +131,15 @@ body {
 /* Carousel container */
 .carousel {
   width: 100%;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 0 auto;
+  background-color: #F8D8E7;
+  border-radius: 15px;
+  padding: 30px;
+  margin: 10 auto;
 }
 
 /* Carousel slides */
 .carousel-slide {
-  padding: 0 10px;
+  padding: 0 40px;
 }
 
 /* Navigation arrows */
@@ -163,7 +163,7 @@ body {
 }
 
 .carousel-pagination .pagination-item.is-active {
-  background-color: #4285f4;
+  background-color: #F8D8E7;
 }
 
 .interpolation-panel {
@@ -194,10 +194,10 @@ body {
   border-radius: 5px;
 }
 
-.dice {
+.vhs {
   font-family: 'Google Sans', sans-serif;
   font-weight: bold;
-  color: #4285f4;
+  color: #C08497;
 }
 
 .carousel-container {

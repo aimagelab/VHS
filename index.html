@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-    content="What Changed? Detecting and Evaluating Instruction-Guided Image Edits with Multimodal Large Language Models">
-  <meta name="keywords" content="Image Editing, MLLMs, Evaluation">
+    content="Tiny Inference-Time Scaling with Latent Verifiers">
+  <meta name="keywords" content="Inference-Time Scaling, Latent Space, Diffusion Transformers, Image Generation">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>What Changed? Detecting and Evaluating Instruction-Guided Image Edits with Multimodal Large Language Models
+  <title>Tiny Inference-Time Scaling with Latent Verifiers
   </title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -89,24 +89,21 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">What Changed? Detecting and Evaluating Instruction-Guided Image
-              Edits with Multimodal Large Language Models</h1>
+            <h1 class="title is-1 publication-title">Tiny Inference-Time Scaling with Latent Verifiers</h1>
             <div class="is-size-5 publication-authors">
-              <h1 class="title is-4" style="color: #5c5c5c;">ICCV 2025</h1>
-              <span class="author-block">
-                <a href="https://lorenzbaraldi.github.io/">Lorenzo Baraldi</a>*<sup>1,2</sup>,</span>
+              <h1 class="title is-4" style="color: #5c5c5c;">CVPR 2026 Findings</h1>
               <span class="author-block">
                 <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=190">Davide
                   Bucciarelli</a>*<sup>1,2</sup>,</span>
               <span class="author-block">
-                <a href="#">Federico Betti</a>*<sup>3</sup>,</span>
+                <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=185">Evelyn Turri</a>*<sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://lorenzbaraldi.github.io/">Lorenzo Baraldi</a>*<sup>1,2</sup>,</span>
               <span class="author-block">
                 <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=90">Marcella
                   Cornia</a><sup>1</sup>,</span>
               <span class="author-block">
                 <a href="https://www.lorenzobaraldi.com/">Lorenzo Baraldi</a><sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="#">Nicu Sebe</a><sup>3</sup>,</span>
               <span class="author-block">
                 <a href="https://www.ritacucchiara.it/">Rita Cucchiara</a><sup>1,4</sup>
               </span>
@@ -115,8 +112,6 @@
             <div class="is-size-5 publication-authors">
               <span class="author-block"><sup>1</sup>University of Modena and Reggio Emilia, Italy,</span>
               <span class="author-block"><sup>2</sup>University of Pisa, Italy,</span>
-              <span class="author-block"><sup>3</sup>University of Trento, Italy,</span>
-              <span class="author-block"><sup>4</sup>IIT-CNR, Italy</span>
             </div>
 
             <div class="column has-text-centered">
@@ -150,7 +145,7 @@
                 </span> -->
                 <!-- Code Link. -->
                 <span class="link-block">
-                  <a href="https://aimagelab.github.io/DICE" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://aimagelab.github.io/VHS-temporary" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-globe"></i>
                     </span>
@@ -159,7 +154,7 @@
                 </span>
 
                 <span class="link-block">
-                  <a href="https://github.com/aimagelab/DICE" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://github.com/aimagelab/VHS" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
@@ -181,11 +176,17 @@
     <div class="container is-max-desktop">
       <div class="hero-body">
         <h2 class="subtitle has-text-centered">
-          We present <span class="dice">DICE</span>, a novel framework to detect and evaluate instruction-guided image
-          edits by identifying differences
-          between original and edited images and assessing their coherence with the editing prompt.
+          <p>
+            We present <span class="vhs">VHS</span>, a novel verification pipeline for evaluating image quality
+          </p>
+          <p>
+            before the full generation of the image.
+          </p>
+          <p>
+            We applied VHS to the Inference-Time scaling setting, for single step image generators.
+          </p>
         </h2>
-        <img src="static/images/teaser.png" alt="DICE Teaser" width="100%">
+        <img src="static/images/vhs/Teaser.png" alt="VHS Teaser" width="100%">
       </div>
     </div>
   </section>
@@ -249,25 +250,13 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Instruction-based image editing models offer increased personalization opportunities in generative tasks.
-              However, properly evaluating their results is challenging, and most of the existing metrics lag in terms
-              of alignment with human judgment and explainability.
+              Inference-time scaling has emerged as an effective way to improve generative models at test time by using a verifier to score and select candidate outputs. A common choice is to employ Multimodal Large Language Models (MLLMs) as verifiers, which can improve performance but introduce substantial inference-time cost. Indeed, diffusion pipelines operate in an autoencoder latent space to reduce computation, yet MLLM verifiers still require decoding candidates to pixel space and re-encoding them into the visual embedding space, leading to redundant and costly operations.
             </p>
             <p>
-              To tackle these issues, we introduce <strong><span class="dice">DICE</span></strong>
-              (<strong>DI</strong>fference
-              <strong>C</strong>oherence <strong>E</strong>stimator), a model designed to detect localized differences
-              between the original and the edited image and to assess their relevance to the given modification request.
-              <span class="dice">DICE</span> consists of two key components: a difference detector and a coherence
-              estimator, both built on an
-              autoregressive Multimodal Large Language Model (MLLM) and trained using a strategy that leverages
-              self-supervision, distillation from inpainting networks, and full supervision.
+              In this work, we propose <strong>V</strong>erifier on <strong>H</strong>idden <strong>S</strong>tates (<span class="vhs">VHS</span>), a verifier that operates directly on intermediate hidden representations of Diffusion Transformer (DiT) single-step generators. <span class="vhs">VHS</span> analyzes generator features without decoding to pixel space, thereby reducing the per-candidate verification cost while improving or matching the performance of MLLM-based competitors. 
             </p>
             <p>
-              Through extensive experiments, we evaluate each stage of our pipeline, comparing different MLLMs within
-              the proposed framework. We demonstrate that <span class="dice">DICE</span> effectively identifies coherent
-              edits, effectively
-              evaluating images generated by different editing models with a strong correlation with human judgment.
+              We show that, under tiny inference budgets with only a small number of candidates per prompt, <span class="vhs">VHS</span> enables more efficient inference-time scaling reducing joint generation-and-verification time by 63.3%, compute FLOPs by 51% and VRAM usage by 14.5% with respect to a standard MLLM verifier, achieving a +2.7% improvement on GenEval at the same inference-time budget.
             </p>
           </div>
         </div>
@@ -279,9 +268,9 @@
         <div class="column is-full-width">
           <h2 class="title is-3 has-text-centered">Method Overview</h2>
           <div class="content has-text-centered">
-            <img src="static/images/model.png" alt="DICE Method Overview" width="100%">
+            <img src="static/images/vhs/Method.png" alt="VHS Method Overview" width="100%">
             <p class="has-text-justified">
-              Our <span class="dice">DICE</span> framework consists of two main components:
+              Our <span class="vhs">VHS</span> framework consists of two main components:
             </p>
             <ul class="has-text-left">
               <li><strong>Difference Detector:</strong> Identifies localized differences between the original and edited
@@ -303,7 +292,7 @@
           <div class="content has-text-centered">
 
             <p>
-              The <strong>difference detection</strong> module in <span class="dice">DICE</span> uses a Multimodal Large
+              The <strong>difference detection</strong> module in <span class="vhs">VHS</span> uses a Multimodal Large
               Language Model (MLLM) to
               identify and
               localize semantic changes between original and edited images at the object level.
@@ -335,100 +324,52 @@
             <div class="carousel-container" style="width: 75%; margin: auto;">
               <div id="difference-detection-carousel" class="carousel results-carousel">
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_1_part_1.png"
-                    alt="DICE Difference Detection Example 1">
+                  <img src="./static/images/single-slide-show-vhs/01_qualitative_single.png"
+                    alt="VHS Example 1">
                 </div>
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_1_part_2.png"
-                    alt="DICE Difference Detection Example 2">
+                  <img src="./static/images/single-slide-show-vhs/02_qualitative_single.png"
+                    alt="VHS Example 2">
                 </div>
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_1_part_3.png"
-                    alt="DICE Difference Detection Example 3">
+                  <img src="./static/images/single-slide-show-vhs/03_qualitative_single.png"
+                    alt="VHS Example 3">
                 </div>
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_1_part_4.png"
-                    alt="DICE Difference Detection Example 4">
+                  <img src="./static/images/single-slide-show-vhs/04_qualitative_single.png"
+                    alt="VHS Example 4">
                 </div>
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_1_part_5.png"
-                    alt="DICE Difference Detection Example 5">
+                  <img src="./static/images/single-slide-show-vhs/05_qualitative_single.png"
+                    alt="VHS Example 5">
                 </div>
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_1_part_6.png"
-                    alt="DICE Difference Detection Example 6">
+                  <img src="./static/images/single-slide-show-vhs/06_qualitative_single.png"
+                    alt="VHS Example 6">
                 </div>
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_1_part_7.png"
-                    alt="DICE Difference Detection Example 7">
+                  <img src="./static/images/single-slide-show-vhs/07_qualitative_single.png"
+                    alt="VHS Example 7">
                 </div>
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_1_part_8.png"
-                    alt="DICE Difference Detection Example 8">
+                  <img src="./static/images/single-slide-show-vhs/08_qualitative_single.png"
+                    alt="VHS Example 8">
                 </div>
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_2_part_1.png"
-                    alt="DICE Difference Detection Example 9">
+                  <img src="./static/images/single-slide-show-vhs/09_qualitative_single.png"
+                    alt="VHS Example 9">
                 </div>
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_2_part_2.png"
-                    alt="DICE Difference Detection Example 10">
+                  <img src="./static/images/single-slide-show-vhs/10_qualitative_single.png"
+                    alt="VHS Example 10">
                 </div>
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_2_part_3.png"
-                    alt="DICE Difference Detection Example 11">
+                  <img src="./static/images/single-slide-show-vhs/11_qualitative_single.png"
+                    alt="VHS Example 11">
                 </div>
                 <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_2_part_4.png"
-                    alt="DICE Difference Detection Example 12">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_2_part_5.png"
-                    alt="DICE Difference Detection Example 13">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_2_part_6.png"
-                    alt="DICE Difference Detection Example 14">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_2_part_7.png"
-                    alt="DICE Difference Detection Example 15">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_2_part_8.png"
-                    alt="DICE Difference Detection Example 16">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_3_part_1.png"
-                    alt="DICE Difference Detection Example 17">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_3_part_2.png"
-                    alt="DICE Difference Detection Example 18">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_3_part_3.png"
-                    alt="DICE Difference Detection Example 19">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_3_part_4.png"
-                    alt="DICE Difference Detection Example 20">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_3_part_5.png"
-                    alt="DICE Difference Detection Example 21">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_3_part_6.png"
-                    alt="DICE Difference Detection Example 22">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_3_part_7.png"
-                    alt="DICE Difference Detection Example 23">
-                </div>
-                <div class="item">
-                  <img src="./static/images/cropped_qualitatives/supp_3_part_8.png"
-                    alt="DICE Difference Detection Example 24">
+                  <img src="./static/images/single-slide-show-vhs/12_qualitative_single.png"
+                    alt="VHS Example 12">
                 </div>
               </div>
             </div>
@@ -484,22 +425,16 @@
             <div class="carousel-container">
               <div id="results-carousel" class="carousel results-carousel">
                 <div class="item">
-                  <img src="./static/images/slide_show/element_1.png" alt="DICE Example 1">
+                  <img src="./static/images/slide-show-vhs/01_qualitative.png" alt="DICE Example 1">
                 </div>
                 <div class="item">
-                  <img src="./static/images/slide_show/element_2.png" alt="DICE Example 2">
+                  <img src="./static/images/slide-show-vhs/02_qualitative.png" alt="DICE Example 2">
                 </div>
                 <div class="item">
-                  <img src="./static/images/slide_show/element_3.png" alt="DICE Example 3">
+                  <img src="./static/images/slide-show-vhs/03_qualitative.png" alt="DICE Example 2">
                 </div>
                 <div class="item">
-                  <img src="./static/images/slide_show/element_4.png" alt="DICE Example 4">
-                </div>
-                <div class="item">
-                  <img src="./static/images/slide_show/element_5.png" alt="DICE Example 5">
-                </div>
-                <div class="item">
-                  <img src="./static/images/slide_show/element_6.png" alt="DICE Example 6">
+                  <img src="./static/images/slide-show-vhs/04_qualitative.png" alt="DICE Example 2">
                 </div>
               </div>
             </div>
