@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="./static/images/vhs-logo.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -82,37 +82,47 @@
 
     </div>
   </nav> -->
+ <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
-
-  <section class="hero">
+  <main id="main-content">
+  <section class="hero bg-intro">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Tiny Inference-Time Scaling with Latent Verifiers</h1>
+            <img src="static/images/vhs-logo.png" alt="VHS Method Overview" width="15%">
+            <h1 class="title is-1 publication-title">
+              Tiny Inference-Time Scaling with<br>
+              <span class="gradienttext">Latent Verifiers</span>
+            </h1>
+            <h1 class="title is-4" style="color: #5c5c5c;">CVPR 2026 Findings</h1>
             <div class="is-size-5 publication-authors">
-              <h1 class="title is-4" style="color: #5c5c5c;">CVPR 2026 Findings</h1>
               <span class="author-block">
                 <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=190">Davide
-                  Bucciarelli</a>*<sup>1,2</sup>,</span>
-              <span class="author-block">
-                <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=185">Evelyn Turri</a>*<sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="https://lorenzbaraldi.github.io/">Lorenzo Baraldi</a>*<sup>1,2</sup>,</span>
-              <span class="author-block">
-                <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=90">Marcella
-                  Cornia</a><sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="https://www.lorenzobaraldi.com/">Lorenzo Baraldi</a><sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="https://www.ritacucchiara.it/">Rita Cucchiara</a><sup>1,4</sup>
-              </span>
+                  Bucciarelli</a>*<sup>1,2</sup></span>
+                <span class="author-block">
+                  <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=185">Evelyn Turri</a>*<sup>1</sup></span>
+                  <span class="author-block">
+                    <a href="https://lorenzbaraldi.github.io/">Lorenzo Baraldi</a><sup>1,2</sup></span>
+                    <span class="author-block">
+                      <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=90">Marcella Cornia</a><sup>1</sup></span>
+                      <span class="author-block">
+                        <a href="https://www.lorenzobaraldi.com/">Lorenzo Baraldi</a><sup>1</sup></span>
+                        <span class="author-block">
+                          <a href="https://www.ritacucchiara.it/">Rita Cucchiara</a><sup>1</sup></span>
             </div>
-
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>University of Modena and Reggio Emilia, Italy,</span>
-              <span class="author-block"><sup>2</sup>University of Pisa, Italy,</span>
-            </div>
+                <div class="is-size-6 publication-affiliations">
+                  <span class="author-block">
+                    University of Modena and Reggio Emilia, Italy<sup>1</sup>
+                    &nbsp;&nbsp;
+                    University of Pisa, Italy<sup>2</sup>
+                    &nbsp;&nbsp; <br>
+                    * <i>Equal contribution</i>
+                  </span>
+                </div>
 
             <div class="column has-text-centered">
               <div class="publication-links">
@@ -161,7 +171,6 @@
                     <span>Code</span>
                   </a>
                 </span>
-                <!-- Dataset Link. -->
 
               </div>
 
@@ -172,77 +181,31 @@
     </div>
   </section>
 
-  <section class="hero teaser">
+  <section class="hero teaser bg-teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
         <h2 class="subtitle has-text-centered">
           <p>
-            We present <span class="vhs">VHS</span>, a novel verification pipeline for evaluating image quality
+            <span class="vhs">VHS</span> operates directly on DiT hidden states to score candidate images <br> <i>No decoding, no re-encoding, 63% faster </i>
+          </p>
+        <img src="static/images/vhs/Teaser.png" alt="VHS Teaser" width="90%">
+        
+          <!-- <p>
+            We present <span class="vhs">VHS</span>, a novel verification pipeline
           </p>
           <p>
-            before the full generation of the image.
+            for evaluating image quality before the full generation of the image.
           </p>
           <p>
             We applied VHS to the Inference-Time scaling setting, for single step image generators.
-          </p>
+          </p> -->
         </h2>
-        <img src="static/images/vhs/Teaser.png" alt="VHS Teaser" width="100%">
       </div>
     </div>
   </section>
 
 
-  <!-- <section class="hero is-light is-small">
-    <div class="hero-body">
-      <div class="container">
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="item item-steve">
-            <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/steve.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-chair-tp">
-            <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/chair-tp.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-shiba">
-            <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/shiba.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-fullbody">
-            <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/fullbody.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-blueshirt">
-            <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/blueshirt.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-mask">
-            <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/mask.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-coffee">
-            <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/coffee.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-toby">
-            <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/toby2.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-
-  <section class="section">
+  <section class="section bg-overview">
     <div class="container is-max-desktop">
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
@@ -262,11 +225,13 @@
         </div>
       </div>
       <!--/ Abstract. -->
-
+  </section>
+  <section class="section bg-method">
+    <div class="container is-max-desktop">
       <!-- Method Overview -->
       <div class="columns is-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3 has-text-centered">Method Overview</h2>
+          <h2 class="title is-3 has-text-centered">Method</h2>
           <div class="content has-text-centered">
             <img src="static/images/vhs/Method.png" alt="VHS Method Overview" width="100%">
             <p class="has-text-justified">
@@ -278,49 +243,98 @@
               <li><strong>Coherence Estimator:</strong> Assesses the relevance of detected changes with respect to the
                 editing prompt</li>
             </ul>
-            <p class="has-text-justified">
-              Both components are built on an autoregressive Multimodal Large Language Model (MLLM) and trained using a
-              combination of self-supervision, distillation from inpainting networks, and full supervision.
-            </p>
+            <div class="columns is-vcentered is-variable is-6">
+              <div class="column is-6">
+                <img src="static/images/Best-of-N.png" alt="VHS Method Overview" width="100%">
+              </div>
+              <div class="column is-6">
+                <p class="has-text-justified">
+                  Both components are built on an autoregressive Multimodal Large Language Model (MLLM) and trained using a
+                  combination of self-supervision, distillation from inpainting networks, and full supervision.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <!--/ Method Overview -->
 
-      <div class="columns is-centered">
+      <!-- Paper video. -->
+      <!-- <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3 has-text-centered">Difference Detection</h2>
-          <div class="content has-text-centered">
+          <h2 class="title is-3">Video</h2>
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" frameborder="0"
+              allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div> -->
+      <!--/ Paper video. -->
+    </div>
+  </section>
 
+  <section class="section bg-method">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Best-of-N Sample</h2>
+          <div class="publication-video">
+            <video controls autoplay muted loop playsinline>
+              <source src="./static/images/cut-best-of-N.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section bg-qualitative-results">
+    <div class="container is-max-desktop">
+
+      <div class="columns is-centered has-text-centered">
+
+        <!-- Visual Effects. -->
+        <div class="column is-four-fifths">
+          <div class="content">
+            <h2 class="title is-3">Qualitative Results</h2>
             <p>
-              The <strong>difference detection</strong> module in <span class="vhs">VHS</span> uses a Multimodal Large
-              Language Model (MLLM) to
-              identify and
-              localize semantic changes between original and edited images at the object level.
-              The task is framed as structured text generation, where the model outputs <em>(command, object, bounding
-                box)</em>
-              triplets describing localized modifications categorized as <strong>ADD</strong>, <strong>REMOVE</strong>,
-              or
-              <strong>EDIT</strong>.
-              These predictions are independent of the user prompt and serve as the basis for coherence evaluation.
+              The <strong>coherence estimation</strong> module in <span class="dice">DICE</span> evaluates whether each
+              detected object-level
+              change aligns
+              with the user's editing instruction.
+              It builds upon the same MLLM architecture as the difference detector and takes as input the original and
+              edited
+              images, the localized bounding box of the change, and the associated modification type.
+              The model outputs a binary decision (<em>YES</em>/<em>NO</em>) along with a textual rationale, determining
+              if the
+              modification is semantically consistent with the prompt.
             </p>
 
-            <p>The model is trained in two stages:</p>
-            <ul>
-              <li>
-                <strong>Stage 1</strong>: Trained on visually similar image pairs from the LVIS dataset, selected using
-                DINOv2
-                embeddings. The model learns to detect object-level differences by identifying which instances appear in
-                one image
-                but not in the other.
-              </li>
-              <li>
-                <strong>Stage 2</strong>: Fine-tuned on synthetically edited image pairs created via LaMa and Kandinsky
-                inpainting.
-                This stage introduces controlled object-level operations—additions, deletions, and replacements—allowing
-                the model
-                to generalize to diverse edit types.
-              </li>
-            </ul>
+            <p>The model is trained with manually annotated samples from the EmuEdit dataset are used to provide
+              ground-truth
+              labels of detected differences and coherence for object-level changes. These include both binary labels
+              and natural language
+              explanations.
+
+            </p>
+            <div class="carousel-container">
+              <div id="results-carousel" class="carousel results-carousel">
+                <div class="item">
+                  <img src="./static/images/slide-show-vhs/01_qualitative.png" alt="DICE Example 1">
+                </div>
+                <div class="item">
+                  <img src="./static/images/slide-show-vhs/02_qualitative.png" alt="DICE Example 2">
+                </div>
+                <div class="item">
+                  <img src="./static/images/slide-show-vhs/03_qualitative.png" alt="DICE Example 2">
+                </div>
+                <div class="item">
+                  <img src="./static/images/slide-show-vhs/04_qualitative.png" alt="DICE Example 2">
+                </div>
+              </div>
+            </div>
             <div class="carousel-container" style="width: 75%; margin: auto;">
               <div id="difference-detection-carousel" class="carousel results-carousel">
                 <div class="item">
@@ -375,71 +389,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <!--/ Method Overview -->
-
-      <!-- Paper video. -->
-      <!-- <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Video</h2>
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" frameborder="0"
-              allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div> -->
-      <!--/ Paper video. -->
-    </div>
-  </section>
-
-
-  <section class="section">
-    <div class="container is-max-desktop">
-
-      <div class="columns is-centered has-text-centered">
-
-        <!-- Visual Effects. -->
-        <div class="column is-four-fifths">
-          <div class="content">
-            <h2 class="title is-3">Coherence Estimation</h2>
-            <p>
-              The <strong>coherence estimation</strong> module in <span class="dice">DICE</span> evaluates whether each
-              detected object-level
-              change aligns
-              with the user's editing instruction.
-              It builds upon the same MLLM architecture as the difference detector and takes as input the original and
-              edited
-              images, the localized bounding box of the change, and the associated modification type.
-              The model outputs a binary decision (<em>YES</em>/<em>NO</em>) along with a textual rationale, determining
-              if the
-              modification is semantically consistent with the prompt.
-            </p>
-
-            <p>The model is trained with manually annotated samples from the EmuEdit dataset are used to provide
-              ground-truth
-              labels of detected differences and coherence for object-level changes. These include both binary labels
-              and natural language
-              explanations.
-
-            </p>
-            <div class="carousel-container">
-              <div id="results-carousel" class="carousel results-carousel">
-                <div class="item">
-                  <img src="./static/images/slide-show-vhs/01_qualitative.png" alt="DICE Example 1">
-                </div>
-                <div class="item">
-                  <img src="./static/images/slide-show-vhs/02_qualitative.png" alt="DICE Example 2">
-                </div>
-                <div class="item">
-                  <img src="./static/images/slide-show-vhs/03_qualitative.png" alt="DICE Example 2">
-                </div>
-                <div class="item">
-                  <img src="./static/images/slide-show-vhs/04_qualitative.png" alt="DICE Example 2">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
+        
         <!--/ Visual Effects. -->
 
         <!-- Matting. -->
@@ -459,14 +410,22 @@
           </div>
         </div> -->
       </div>
+    </div>
       <!--/ Matting. -->
+  </section>
 
 
 
       <!-- Results -->
+  <section class="section bg-quantitative-results">
+    <div class="container is-max-desktop">
+
       <div class="columns is-centered has-text-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Quantitative Results</h2>
+
+        <!-- Visual Effects. -->
+        <div class="column is-four-fifths">
+          <div class="content">
+            <h2 class="title is-3">Quantitative Results</h2>
 
           <!-- Quantitative Results -->
           <div class="content has-text-justified">
@@ -474,23 +433,8 @@
               <figure class="image mb-6">
                 <img src="static/images/Table 1.png" alt="Table 1: Difference Detection Performance"
                   style="width: 100%;">
-                <figcaption class="has-text-centered mt-2">Performance comparison of various MLLMs in the difference
-                  detection stage of our pipeline, evaluated under both
-                  class-agnostic and class-aware settings. Results are presented in terms of AP metrics across various
-                  training
-                  configurations.
+                <figcaption class="has-text-centered mt-2">We compare three verifier configurations under fixed wall-clock time (not function evaluations). Because VHS is faster per sample, it evaluates more candidates within the same time budget, consistently improving final generation quality.
                 </figcaption>
-              </figure>
-              <figure class="image">
-                <img src="static/images/Table 3.png" alt="Table 3: Coherence Estimation Results" style="width: 100%;">
-                <figcaption class="has-text-centered mt-2">Benchmark comparison of model rankings generated by <span
-                    class="dice">DICE</span> and
-                  those derived from the user study. The first two columns
-                  contrast average human ratings with scores obtained using <span class="dice">DICE</span>. The final
-                  column compares the percentage of unchanged
-                  images in the user study -- cases with maximal background preservation and minimal prompt adherence --
-                  to the
-                  corresponding one identified by <span class="dice">DICE</span>.</figcaption>
               </figure>
             </div>
           </div>
@@ -500,16 +444,74 @@
         </div>
   </section>
 
+  <section id="contributions">
+    <div class="container is-max-desktop">
 
-  <section class="section" id="BibTeX">
+      <div class="columns is-centered has-text-centered">
+
+        <!-- Visual Effects. -->
+        <div class="column is-four-fifths">
+          <div class="content">
+            <h2 class="title is-3">Key Takeaways</h2>
+            <div class="cards">
+              <div class="card">
+                <div class="card-icon blue">&#x1F52D;</div>
+                <h3>Latent Verifier</h3>
+                <p>VHS directly aligns DiT hidden states h<sub>&#x2113;*</sub> with an LLM input space, eliminating the pixel-space decode&ndash;encode roundtrip entirely.</p>
+              </div>
+              <div class="card">
+                <div class="card-icon green">&#x23F1;</div>
+                <h3>Wall-Clock Scaling</h3>
+                <p>We define a latency-aware inference-time scaling setting that explicitly measures wall-clock time rather than function evaluations alone.</p>
+              </div>
+              <div class="card">
+                <div class="card-icon red">&#x1F9EA;</div>
+                <h3>Thorough Ablations</h3>
+                <p>We study layer depth, LLM backbone, loss function, and training data, exposing key latency&ndash;accuracy trade-offs at tiny compute budgets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section id="takeaways">
+   <div class="container is-max-desktop">
+
+      <div class="columns is-centered has-text-centered">
+
+        
+        <div class="column is-four-fifths">
+          <div class="content">
+            <h2 class="title is-3">Key Takeaways</h2>
+
+            <div class="takeaway-container">
+              <div class="takeaway">Eliminates<br> <strong>decode–encode</strong> <br>bottleneck</div>
+              <div class="takeaway">Enables<br> <strong>better scaling</strong> <br>under fixed time</div>
+              <div class="takeaway">Leverages<br> <strong>latent semantics</strong> <br>instead of pixels</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="section bg-bibtex" id="BibTeX">
     <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@inproceedings{baraldi2025dice,
-  title     = {What Changed? Detecting and Evaluating Instruction-Guided Image Edits with Multimodal Large Language Models},
-  author    = {Baraldi, Lorenzo and Bucciarelli, Davide and Betti, Federico and Cornia, Marcella and Baraldi, Lorenzo and Sebe, Niculae and Cucchiara, Rita},
-  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-  year      = {2025}
-}</code></pre>
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@inproceedings{baraldi2025dice,
+        title     = {Tiny Inference-Time Scaling with Latent Verifiers},
+        author    = {Bucciarelli, Davide and Turri, Evelyn and Baraldi, Lorenzo and Cornia, Marcella and Baraldi, Lorenzo and Sebe, Niculae and Cucchiara, Rita},
+        booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+        year      = {2026}
+      }</code></pre>
     </div>
   </section>
 

@@ -1,7 +1,86 @@
+/* Modern CSS Variables for consistent theming */
+:root {
+  --primary-color: #C08497;
+  --primary-hover: #674752;
+  --secondary-color: #64748b;
+  --accent-color: #0ea5e9;
+  --text-primary: #555;
+  --text-secondary: #64748b;
+  --text-light: #94a3b8;
+  --background-primary: #ffffff;
+  --background-secondary: #fff2f7;
+  --background-accent: #f1f5f9;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --gradient-primary: linear-gradient(90deg, #C08497 0%, #A7DEB7 100%);;
+  --gradient-accent: linear-gradient(90deg, #C08497, #A7DEB7);
+  --gradient-takeaway: linear-gradient(180deg, #C08497 0%, #A7DEB7 120%);;
+  --gradient-subtle: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  --border-radius: 12px;
+  --border-radius-lg: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --bg:          #F7F5F2;
+  --surface:     #FFFFFF;
+  --ink:         #1A1916;
+  --muted:       #6B6860;
+  --accent:      #2B5CE6;
+  --accent2:     #E84C30;
+  --accent3:     #2BAA6E;
+  --rule:        #E2DFD9;
+  --tag-bg:      #EBF0FC;
+  --tag-text:    #1E3EA0;
+}
+
 body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+
+:root {
+  --bg-intro: #ffffff;
+  --bg-teaser: #ffffff;
+  --bg-overview: #fff2f7;
+  --bg-method: #ffffff;
+  --bg-qualitative-results: #fff2f7;
+  --bg-quantitative-results: #ffffff;
+  --bg-bibtex: #fff2f7;
+}
+
+.bg-intro {
+  background-color: var(--bg-intro);
+}
+
+.bg-teaser {
+  background-color: var(--bg-teaser);
+}
+
+.bg-overview {
+  background-color: var(--bg-overview);
+}
+
+.bg-quantitative-results {
+  background-color: var(--bg-quantitative-results);
+}
+
+.bg-qualitative-results {
+  background-color: var(--bg-qualitative-results);
+}
+
+.bg-bibtex {
+  background-color: var(--bg-bibtex);
+}
+
+.bg-method {
+  background-color: var(--bg-method);
+}
 
 .footer .icon-link {
   font-size: 25px;
@@ -17,6 +96,13 @@ body {
   font-variant: small-caps;
 }
 
+.gradienttext {
+  background: linear-gradient(90deg, #C08497, #A7DEB7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
 
 .teaser .hero-body {
   padding-top: 0;
@@ -47,10 +133,6 @@ body {
 
 .publication-header .hero-body {}
 
-.publication-authors {
-  font-family: 'Google Sans', sans-serif;
-}
-
 .publication-venue {
   color: #555;
   width: fit-content;
@@ -63,25 +145,64 @@ body {
   font-weight: bolder;
 }
 
-.publication-authors {}
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
 
 .publication-authors a {
   color: #C08497 !important;
 }
 
-.publication-authors a:hover {
+/* .publication-authors a:hover {
   text-decoration: underline;
+} */
+/* 
+.author-block {
+  display: inline-block;
+} */
+
+.publication-authors a {
+   color: var(--primary-color) !important;
+   text-decoration: none;
+   font-weight: 600;
+   transition: var(--transition);
+   position: relative;
+}
+
+.publication-affiliations {
+  margin-top: -1.6rem;
+}
+
+.publication-authors a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: var(--gradient-accent);
+    transition: var(--transition);
+}
+
+.publication-authors a:hover::after {
+    width: 100%;
+}
+
+.publication-authors a:hover {
+    color: var(--primary-color) !important;
 }
 
 .author-block {
   display: inline-block;
+  margin-right: 0.5rem;
 }
-
 .publication-banner img {}
 
-.publication-authors {
+/* .publication-authors {
   /*color: #4286f4;*/
-}
+/*}*/
 
 .publication-video {
   position: relative;
@@ -99,6 +220,15 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.publication-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .publication-body img {}
@@ -131,7 +261,7 @@ body {
 /* Carousel container */
 .carousel {
   width: 100%;
-  background-color: #F8D8E7;
+  background-color: #F2F2F2;
   border-radius: 15px;
   padding: 30px;
   margin: 10 auto;
@@ -163,7 +293,7 @@ body {
 }
 
 .carousel-pagination .pagination-item.is-active {
-  background-color: #F8D8E7;
+  background-color: #F2F2F2;
 }
 
 .interpolation-panel {
@@ -206,3 +336,198 @@ body {
   margin: 0 auto;
   padding: 20px 0;
 }
+
+/* Section Titles */
+.title.is-3 {
+  font-family: 'Google Sans', sans-serif !important;
+  font-weight: 700 !important;
+  color: var(--text-primary);
+  margin-bottom: 2rem !important;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.title.is-3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--gradient-accent);
+  border-radius: 2px;
+}
+
+/* BibTeX Styling */
+pre {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  font-size: 0.9rem !important;
+  overflow-x: auto;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+code {
+  background: #ffffff !important;
+  color: #555 !important;
+  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace !important;
+}
+
+/* BibTeX Section Improvements */
+.bibtex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.copy-bibtex-btn {
+  background: #C08497;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-bibtex-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.copy-bibtex-btn.copied {
+  background: var(--gradient-accent);
+}
+
+.copy-bibtex-btn.copied .copy-text::after {
+  content: "ied!";
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.scroll-to-top:hover {
+  background: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#takeaways {
+  font-family: 'Google Sans', sans-serif;
+  color: var(--text-primary);
+  text-align: center;
+  padding: 20px 20px;
+}
+
+.takeaway-container {
+  display: flex;
+  flex-direction: line;
+  gap: 18px;
+  max-width: 700px;
+  margin: 40px auto 0;
+}
+
+.takeaway {
+  position: relative;
+  width: 100%;
+  padding: 8px 0 8px 18px;
+  text-align: left;
+  font-size: 20px;
+  line-height: 1.45;
+
+  /* animation initial state */
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+}
+
+.takeaway::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--gradient-takeaway);
+}
+
+
+/*claude*/
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 24px 22px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.09); transform: translateY(-3px); }
+
+.card-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 14px;
+  font-size: 20px;
+}
+
+.card-icon.blue  { background: var(--tag-bg); }
+.card-icon.green { background: #E4F6EC; }
+.card-icon.red   { background: #FBE9E6; }
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.card p { 
+  font-size: 14.5px; 
+  font-family: 'Google Sans', sans-serif;
+  color: var(--text-primary); 
+  margin: 0; }
