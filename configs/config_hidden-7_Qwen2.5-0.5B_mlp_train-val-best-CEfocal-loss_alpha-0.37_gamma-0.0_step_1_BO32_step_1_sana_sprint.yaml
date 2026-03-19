@@ -1,0 +1,42 @@
+# Configuration file for eval.py script
+# Based on the "Debug Eval Custom" configuration from launch.json
+
+# Model and checkpoint paths
+ckpt: "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers"
+
+# Output and data paths
+output_path: "./outputs"
+#save_intermediate_path: "intermediates"
+annotation: "data/evaluation_metadata.json"
+
+# Experiment settings
+name: "geneval_sana_sprint_hidden-7_Qwen2.5-0.5B_train-val-best-CEfocal-loss_alpha-0.37_gamma-0.0_bo32_step_1"
+dataset: "geneval"
+seed: 42
+
+# Images path
+
+# Generation parameters
+num_samples: 32
+image_width: 1024
+image_height: 1024
+# Model behavior flags
+cont: false
+re_eval: false
+num_inference_steps: 1
+intermediate_timesteps: 1.3 #1.3 default of pipeline_sana_sprint
+use_resolution_binning: false
+generator: "Sana-Sprint"
+latent_verifier: true
+latent_verifier_name: "sana_hidden-7-Qwen2.5-0.5B-mlp-train-val-best-CEfocal-loss-alpha-0.37-gamma-0.0"
+mm_projector_type: "mlp2x_gelu"
+normalization_mean_path: "ckpts/normalization/block_7_mean_bf16.pt"
+normalization_variance_path: "ckpts/normalization/block_7_variance_bf16.pt"
+use_generation_prompt: False
+generation_mode: "prod"
+
+# Output format
+fmt: "jpg"
+
+# Benchmarking settings
+intermediate_benchmarking: false

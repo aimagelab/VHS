@@ -1,0 +1,42 @@
+# Configuration file for eval.py script
+# Based on the "Debug Eval Custom" configuration from launch.json
+
+# Model and checkpoint paths
+ckpt: "Efficient-Large-Model/Sana_Sprint_1.6B_1024px_diffusers"
+
+# Output and data paths
+output_path: "./outputs"
+#save_intermediate_path: "intermediates"
+annotation: "data/evaluation_metadata.json"
+
+# Experiment settings
+name: "geneval_sana_sprint_clip_Qwen2.5-0.5B_orig_train-val-best-CE-loss_bo32_step_1"
+dataset: "geneval"
+seed: 42
+
+# Images path
+#imgs_path: "./outputs/geneval_sana_sprint_hidden-7_Qwen2.5-0.5B_train-val-best-CEfocal-loss_alpha-0.37_gamma-0.0_bo32_step_1/gen_eval_geneval_sana_sprint_hidden-7_Qwen2.5-0.5B_train-val-best-CEfocal-loss_alpha-0.37_gamma-0.0_bo32_step_1"
+
+# Generation parameters
+num_samples: 32
+image_width: 1024
+image_height: 1024
+# Model behavior flags
+cont: false
+re_eval: false
+num_inference_steps: 1
+intermediate_timesteps: 1.3 #1.3 default of pipeline_sana_sprint
+use_resolution_binning: false
+generator: "Sana-Sprint"
+latent_verifier: true
+latent_verifier_name: "qwen2.5-0.5B_clip_original-data_XE"
+mm_projector_type: "mlp2x_gelu"
+use_generation_prompt: False
+segmentation_config_path: "configs/mask2former/mask2former_swin-s-p4-w7-224_8xb2-lsj-50e_coco.py"
+segmentation_ckpt_path: "ckpts/geneval-det/mask2former_swin-s-p4-w7-224_8xb2-lsj-50e_coco_20220504_001756-c9d0c4f2.pth"
+generation_mode: "prod"
+# Output format
+fmt: "jpg"
+
+# Benchmarking settings
+intermediate_benchmarking: false

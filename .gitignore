@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Experiment outputs (generated images and evaluation results)
+outputs/
+
+# Downloaded checkpoints and large binaries
+ckpts/
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.h5
+*.hdf5
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
