@@ -10,8 +10,8 @@ import argparse
 import re
 import pandas as pd
 import accelerate
-from train_scripts.geneval_utils import SegmentationFeedback
-from train_scripts.modeling.utils import set_seed
+from verifier_scripts.geneval_utils import SegmentationFeedback
+from verifier_scripts.modeling.utils import set_seed
 from latent_verifier_dict import LATENT_VERIFIER
 from tqdm import tqdm
 import yaml
@@ -230,7 +230,7 @@ if latent_verifier is not None:
     vision_tower = LATENT_VERIFIER[f"{latent_verifier_name}"]["vision_tower"]
     os.environ["TOKENIZER_PATH"] = config.get("tokenizer_path", latent_verifier_path)
     if vision_tower is not None:
-        from train_scripts.latent_verifier import LatentGemmaVerifier
+        from verifier_scripts.latent_verifier import LatentGemmaVerifier
         generation_prompt = config.get("use_generation_prompt", True)
         mm_projector_type=config.get("mm_projector_type", "mlp2x_gelu")
         feedback = LatentGemmaVerifier("cuda",
@@ -244,7 +244,7 @@ if latent_verifier is not None:
                                        normalization_variance_path=config.get("normalization_variance_path", None),
                                        )
     else:
-        from train_scripts.latent_verifier import LatentGemmaVerifier
+        from verifier_scripts.latent_verifier import LatentGemmaVerifier
         feedback = LatentGemmaVerifier("cuda", latent_verifier_path, lora_weights=config.get("lora_weights", None))
 external_verifier = config.get("external_verifier", None)
 if feedback is None and scorer is None and args.dataset != 'token_compose':
