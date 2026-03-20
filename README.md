@@ -1,3 +1,39 @@
+<div id="top"></div>
+
+<br />
+<div align="center">
+
+  <img src="assets/logo.png" width="100"/>
+
+  <h1 align="center">Tiny Inference-Time Scaling with Latent Verifiers</h1>
+
+  <h3 align="center">
+   CVPR 2026 Findings
+  </h3>
+
+
+<div align="center">
+  <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=190">Davide Bucciarelli*</a>
+  •
+  <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=185">Evelyn Turri*</a>
+  •
+  <a href="https://lorenzbaraldi.github.io/">Lorenzo Baraldi</a>
+  <br />
+  <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=90">Marcella Cornia</a>
+  •
+  <a href="https://www.lorenzobaraldi.com/">Lorenzo Baraldi</a>
+  •
+  <a href="https://www.ritacucchiara.it/">Rita Cucchiara</a>
+ <p align="center"> 
+  </p>
+</div>
+<div align="center">
+  <p align="center">
+    <a href="" target="_blank"><img src="https://img.shields.io/badge/-arxiv-grey" alt="Paper"></a>
+  </p>
+</div>
+
+
 # VHS: Verifier on Hidden States
 
 **VHS** is a latent verifier framework for best-of-N text-to-image generation. It scores candidate images — or their intermediate latent representations — against a text prompt using a lightweight multimodal language model (Qwen2.5-0.5B + LLaVA), enabling efficient selection of the best generation without running a full evaluator on every sample.
