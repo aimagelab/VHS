@@ -201,6 +201,7 @@ This codebase builds on:
 - [GeneVal](https://github.com/djghosh13/geneval) — compositional text-to-image evaluation benchmark
 - [Mask2Former](https://github.com/facebookresearch/Mask2Former) — instance segmentation for object detection
 - [OpenCLIP](https://github.com/mlfoundations/open_clip) — CLIP vision encoders
+- [Reflect-DiT](https://github.com/jacklishufan/reflect-dit)
 
 ---
 

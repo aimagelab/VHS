@@ -17,10 +17,3 @@ open-clip-torch
 clip-benchmark
 mmdet
 
-# Latent verifier stack
-llava-hf
-
-# Optional verifiers imported by the script (install only if you use them)
-image-reward
-t2v-metrics
-git+https://github.com/openai/CLIP.git
