@@ -531,3 +531,86 @@ code {
   font-family: 'Google Sans', sans-serif;
   color: var(--text-primary); 
   margin: 0; }
+
+
+/* ─── Method diagram ─── */
+  .pipeline-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .pipeline-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem;
+  }
+  .pipeline-box.highlight { border-color: var(--accent); }
+  .pipeline-title {
+    font-family: var(--mono);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    margin-bottom: 1rem;
+    color: var(--muted);
+  }
+  .pipeline-box.highlight .pipeline-title { color: var(--accent); }
+  .pipeline-steps {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .step {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    font-size: .875rem;
+    color: var(--text-dim);
+  }
+  .step-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: .65rem;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .pipeline-box.highlight .step-icon { border-color: var(--accent); color: var(--accent); }
+  .step.struck { text-decoration: line-through; opacity: .4; }
+  .step-arrow { color: var(--muted); font-size: .75rem; padding-left: 14px; }
+
+  /* ─── Training stages ─── */
+  .stages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .stage-card {
+    background: var(--background-secondary);
+    border: 2px solid var(--background-secondary);
+    border-radius: 4px;
+    padding: 1.5rem;
+    transition: border-color .2s;
+  }
+  .stage-card:hover { border-color: var(--primary-color); }
+  .stage-num {
+    font-family: 'Google Sans', sans-serif;
+    font-size: .68rem;
+    letter-spacing: .12em;
+    color: var(--primary-hover);
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+  }
+  .stage-card h3 {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: .6rem;
+  }
+  .stage-card p { font-size: .875rem; margin: 0; }

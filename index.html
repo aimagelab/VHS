@@ -231,53 +231,57 @@
       <!-- Method Overview -->
       <div class="columns is-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3 has-text-centered">Method</h2>
+          <h2 class="title is-3 has-text-centered">Verification in Latent Space</h2>
           <div class="content has-text-centered">
             <img src="static/images/vhs/Method.png" alt="VHS Method Overview" width="100%">
-            <p class="has-text-justified">
-              Our <span class="vhs">VHS</span> framework consists of two main components:
+          <div class="content has-text-justified">
+            <p>
+              Standard MLLM verifiers score a generated image by decoding the latent <code style="font-family:var(--mono);font-size:.85em;color:var(--accent2)">z₀</code> to pixel space, then re-encoding it through a visual backbone (e.g., CLIP) before passing it to an LLM. <span class="vhs">VHS</span> eliminates this pipeline entirely.
+              Instead, it directly aligns DiT hidden states <code style="font-family:var(--mono);font-size:.85em;color:var(--accent2)">h<sub>&#x2113;*</sub></code> with an LLM input space, allowing it to analyze generator features without decoding to pixel space. This design choice significantly reduces the per-candidate verification cost while improving or matching the performance of MLLM-based competitors.
             </p>
-            <ul class="has-text-left">
-              <li><strong>Difference Detector:</strong> Identifies localized differences between the original and edited
-                images</li>
-              <li><strong>Coherence Estimator:</strong> Assesses the relevance of detected changes with respect to the
-                editing prompt</li>
-            </ul>
-            <div class="columns is-vcentered is-variable is-6">
-              <div class="column is-6">
-                <img src="static/images/Best-of-N.png" alt="VHS Method Overview" width="100%">
+          <!-- <div class="pipeline-compare">
+            <div class="pipeline-box">
+              <div class="pipeline-title">Standard Pipeline</div>
+                <div class="pipeline-steps">
+                  <div class="step"><div class="step-icon">1</div>Generate latent z₀</div>
+                  <div class="step-arrow">↓</div>
+                  <div class="step"><div class="step-icon">2</div>Decode → pixel space x₀</div>
+                  <div class="step-arrow">↓</div>
+                  <div class="step"><div class="step-icon">3</div>Re-encode via CLIP</div>
+                  <div class="step-arrow">↓</div>
+                  <div class="step"><div class="step-icon">4</div>LLM scores the image</div>
+                </div>
               </div>
-              <div class="column is-6">
-                <p class="has-text-justified">
-                  Both components are built on an autoregressive Multimodal Large Language Model (MLLM) and trained using a
-                  combination of self-supervision, distillation from inpainting networks, and full supervision.
-                </p>
+              <div class="pipeline-box highlight">
+                <div class="pipeline-title">VHS (Ours)</div>
+                <div class="pipeline-steps">
+                  <div class="step"><div class="step-icon">1</div>Run DiT to layer ℓ*</div>
+                  <div class="step-arrow">↓</div>
+                  <div class="step struck"><div class="step-icon">—</div>Decode to pixel space</div>
+                  <div class="step struck"><div class="step-icon">—</div>Re-encode via CLIP</div>
+                  <div class="step-arrow">↓</div>
+                  <div class="step"><div class="step-icon">2</div>LLM scores hidden state h<sub>ℓ*</sub></div>
+                </div>
               </div>
             </div>
+          </div> -->
+          <p>
+            By accessing hidden states at layer ℓ*, <span class="vhs">VHS</span> also <strong> truncates the generator early</strong>, skipping the remaining DiT layers during verification. Only the winning candidate is propagated through the full network to produce the final image.
+          </p>
+      
+          <div class="stages">
+            <div class="stage-card">
+              <div class="stage-num">Stage 1</div>
+              <h3>Alignment</h3>
+              <p>Adapts DiT hidden features to the LLM's input space using re-captioned synthetic image–caption pairs, following the LLaVA training scheme. Only the connector is trained.</p>
+            </div>
+            <div class="stage-card">
+              <div class="stage-num">Stage 2</div>
+              <h3>Verifier Fine-tuning</h3>
+              <p>Specializes the model on binary (Yes/No) quality labels derived from 118k generated samples categorized by GenEval criteria. Weighted cross-entropy addresses class imbalance.</p>
+            </div>
           </div>
-        </div>
-      </div>
-      <!--/ Method Overview -->
-
-      <!-- Paper video. -->
-      <!-- <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Video</h2>
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" frameborder="0"
-              allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div> -->
-      <!--/ Paper video. -->
-    </div>
-  </section>
-
-  <section class="section bg-method">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Best-of-N Sample</h2>
+          
           <div class="publication-video">
             <video controls autoplay muted loop playsinline>
               <source src="./static/images/cut-best-of-N.mp4" type="video/mp4">
@@ -300,24 +304,7 @@
           <div class="content">
             <h2 class="title is-3">Qualitative Results</h2>
             <p>
-              The <strong>coherence estimation</strong> module in <span class="dice">DICE</span> evaluates whether each
-              detected object-level
-              change aligns
-              with the user's editing instruction.
-              It builds upon the same MLLM architecture as the difference detector and takes as input the original and
-              edited
-              images, the localized bounding box of the change, and the associated modification type.
-              The model outputs a binary decision (<em>YES</em>/<em>NO</em>) along with a textual rationale, determining
-              if the
-              modification is semantically consistent with the prompt.
-            </p>
-
-            <p>The model is trained with manually annotated samples from the EmuEdit dataset are used to provide
-              ground-truth
-              labels of detected differences and coherence for object-level changes. These include both binary labels
-              and natural language
-              explanations.
-
+              Visual comparison of the best pick images by different verifiers for GenEval-generated images.
             </p>
             <div class="carousel-container">
               <div id="results-carousel" class="carousel results-carousel">
@@ -335,6 +322,9 @@
                 </div>
               </div>
             </div>
+            <p>
+              Visual comparison of the best pick images by different verifiers for images generated by SANA-Sprint on GenEval prompts. ✓ and × express the alignment with the GenEval verifier.
+            </p>
             <div class="carousel-container" style="width: 75%; margin: auto;">
               <div id="difference-detection-carousel" class="carousel results-carousel">
                 <div class="item">
@@ -419,16 +409,20 @@
       <!-- Results -->
   <section class="section bg-quantitative-results">
     <div class="container is-max-desktop">
-
+      
       <div class="columns is-centered has-text-centered">
 
         <!-- Visual Effects. -->
-        <div class="column is-four-fifths">
+        <div class="column is-full-width">
           <div class="content">
             <h2 class="title is-3">Quantitative Results</h2>
-
+          <p>
+            We evaluate on GenEval across three wall-clock budgets. At each budget, <span class="vhs">VHS</span> evaluates more candidates than MLLM w/ CLIP thanks to its 63.3% lower verification latency.
+            This allows <span class="vhs">VHS</span> to achieve higher final generation quality, improving GenEval scores by +2.7% at the same time budget.
+          </p>
+          <iframe src="main_table.html" width="100%" height="500px" frameborder="0"></iframe>
           <!-- Quantitative Results -->
-          <div class="content has-text-justified">
+          <!-- <div class="content has-text-justified">
             <div class="column is-10 is-offset-1">
               <figure class="image mb-6">
                 <img src="static/images/Table 1.png" alt="Table 1: Difference Detection Performance"
@@ -437,7 +431,7 @@
                 </figcaption>
               </figure>
             </div>
-          </div>
+          </div> -->
 
 
 
@@ -457,7 +451,7 @@
               <div class="card">
                 <div class="card-icon blue">&#x1F52D;</div>
                 <h3>Latent Verifier</h3>
-                <p>VHS directly aligns DiT hidden states h<sub>&#x2113;*</sub> with an LLM input space, eliminating the pixel-space decode&ndash;encode roundtrip entirely.</p>
+                <p><span class="vhs">VHS</span> directly aligns DiT hidden states h<sub>&#x2113;*</sub> with an LLM input space, eliminating the pixel-space decode&ndash;encode roundtrip entirely.</p>
               </div>
               <div class="card">
                 <div class="card-icon green">&#x23F1;</div>
@@ -508,7 +502,7 @@
       </div>
       <pre id="bibtex-code"><code>@inproceedings{baraldi2025dice,
         title     = {Tiny Inference-Time Scaling with Latent Verifiers},
-        author    = {Bucciarelli, Davide and Turri, Evelyn and Baraldi, Lorenzo and Cornia, Marcella and Baraldi, Lorenzo and Sebe, Niculae and Cucchiara, Rita},
+        author    = {Bucciarelli, Davide and Turri, Evelyn and Baraldi, Lorenzo and Cornia, Marcella and Baraldi, Lorenzo and Cucchiara, Rita},
         booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
         year      = {2026}
       }</code></pre>
