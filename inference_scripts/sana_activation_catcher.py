@@ -6,7 +6,7 @@ import math
 import h5py
 from tqdm import tqdm
 import os
-from train_scripts.modeling.utils import set_seed
+from verifier_scripts.modeling.utils import set_seed
 import random
 
 class ActivationCatcher:
