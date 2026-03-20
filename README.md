@@ -32,6 +32,7 @@
     <a href="" target="_blank"><img src="https://img.shields.io/badge/-arxiv-grey" alt="Paper"></a>
   </p>
 </div>
+</div>
 
 
 # VHS: Verifier on Hidden States
