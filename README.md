@@ -175,7 +175,7 @@ vhs-release/
 │   ├── sana_activation_catcher.py        # PyTorch hook for capturing hidden activations
 │   ├── latent_verifier_dict.py           # Registry of available verifier checkpoints
 │   └── object_names.txt                  # COCO-80 class names for GeneVal
-├── train_scripts/
+├── verifier_scripts/
 │   ├── latent_verifier.py                # LatentGemmaVerifier / LatentGemmaFeedback classes
 │   └── geneval_utils.py                  # GeneVal evaluator (Mask2Former + CLIP)
 ├── vhs/                            # Core VHS package
