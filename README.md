@@ -13,13 +13,13 @@
 
 
 <div align="center">
-  <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=190">Davide Bucciarelli*</a>
+  <a href="https://scholar.google.com/citations?user=cyYLYSMAAAAJ&hl=en">Davide Bucciarelli*</a>
   •
-  <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=185">Evelyn Turri*</a>
+  <a href="https://scholar.google.com/citations?user=JKw6RqwAAAAJ&hl=en">Evelyn Turri*</a>
   •
   <a href="https://lorenzbaraldi.github.io/">Lorenzo Baraldi</a>
   <br />
-  <a href="https://aimagelab.ing.unimore.it/imagelab/person.asp?idpersona=90">Marcella Cornia</a>
+  <a href="https://scholar.google.it/citations?user=DzgmSJEAAAAJ">Marcella Cornia</a>
   •
   <a href="https://www.lorenzobaraldi.com/">Lorenzo Baraldi</a>
   •
