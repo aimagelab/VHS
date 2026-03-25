@@ -29,7 +29,7 @@
 </div>
 <div align="center">
   <p align="center">
-    <a href="" target="_blank"><img src="https://img.shields.io/badge/-arxiv-grey" alt="Paper"></a>
+    <a href="https://arxiv.org/abs/2603.22492" target="_blank"><img src="https://img.shields.io/badge/-arxiv-grey" alt="Paper"></a>
     <a href="https://aimagelab.github.io/VHS/" target="_blank"><img src="https://img.shields.io/badge/-project%20page-grey" alt="Project Page"></a>
   </p>
 </div>
